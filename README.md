@@ -7,7 +7,7 @@
 | [Introduction](#Introduction) | show the dataset we used in the whole expriment|
 | [Download](#Download) | where to download the model & word vectors|
 | [BERT](#BERT) | including pretraining and results on two evaluation tasks |
-| [Word Embedding](#Word-Embedding)| including pretraining and results on two evaluation tasks |
+| [Word Embedding](#Word-Embedding)| including pretraining and some evaluation results |
 ## Download
 | Model | Data | Link |
 | -- | -- | -- |
