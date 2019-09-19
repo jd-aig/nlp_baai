@@ -1,3 +1,3 @@
 # nlp_baai
-1. JD AI Lab embedding trained on JD Customer Service Dialogue Data
-2. JD AI Lab Chinese BERT trained on JD Customer Service Dialogue Data
+1. BAAI-JDAI word embedding
+2. BAAI-JDAI BERT
