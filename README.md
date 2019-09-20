@@ -1,32 +1,32 @@
 ## Guide
 | Section | About |
 | -- | -- |
-| [Introduction](#Introduction) | show the dataset we used in the whole expriment|
-| [Download](#Download) | where to download the model & word vectors|
-| [BERT](#BERT) | including pretraining and results on two evaluation tasks |
-| [Word Embedding](#Word-Embedding)| including pretraining and some evaluation results |
+| [Introduction](#Introduction) | The dataset we used in the whole experiment|
+| [Download](#Download) | Download links for the pre-trained BERT & Word Embedding|
+| [BERT](#BERT) | Details of pre-training and results on two evaluation tasks |
+| [Word Embedding](#Word-Embedding)| Details pre-training and some evaluation results |
 ## Download
-| Model | Data | Link |
+| Model | Data Source| Link |
 | -- | -- | -- |
-| JD BERT, chinese | CSDA | [Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048798&Signature=vv36ssU2iqVasPOdYuBCWIDm5X4%3D)|
-| JD WordEmbedding | CSDA | [300d](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-WORD-EMBEDDING.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048776&Signature=14rM5LFQywsWHLXhlhGEQAHEE%2FQ%3D)|
+| JD BERT, chinese | CSDD | [Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048798&Signature=vv36ssU2iqVasPOdYuBCWIDm5X4%3D)|
+| JD WordEmbedding | CSDD | [300d](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-WORD-EMBEDDING.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048776&Signature=14rM5LFQywsWHLXhlhGEQAHEE%2FQ%3D)|
 ## Introduction
 For better training models or completing tasks in the e-commercial domain, we provide pre-trained BERT and word embedding. The charts below shows the data we used.
 
-| | Tokens | Sentence Pairs |
-| -- | -- | -- |
-| BERT | 9B | - |
-| QAP | - | 0.43M for train, 54K for test |
-| QQC | - | 0.47M for train, 25K for test |
-
-| | Tokens | Vocabulary Size |
+| Task| Data Source | Sentences | Sentence Pairs |
 | -- | -- | -- | -- |
-| word embedding | 9B | 1M | 
+| BERT Pre-Training | Customer Service Dialogue Data(CSDD)| 1.2B | - |
+| QAP | - | - | 0.43M for train, 54K for test |
+| QQC | - | - | 0.47M for train, 25K for test |
+
+| | Data Source |Tokens | Vocabulary Size |
+| -- | -- | -- | -- |
+| Word Embedding Pre-Training | CSDD | 9B | 1M | 
 ## BERT
 ### Pretrain Settings
-| Masking | Dataset | Tokens | Training Steps | Device | Init Checkpoint | Init Lr |
+| Masking | Dataset | Sentences | Training Steps | Device | Init Checkpoint | Init Lr |
 | -- | -- | -- | -- | -- | -- | -- |
-| WordPiece | Customer Service Dialogue Data | 9B | 1M | P40 | BERT<sup>Google</sup> weight | 1e-4 |
+| WordPiece | Customer Service Dialogue Data | 1.2B | 1M | P40×4 | BERT<sup>Google</sup> weight | 1e-4 |
 * When pre-training, we do the data preprocessing with our preprocessor including some generalization processing.
 * The init checkpoint we use is <12-layer, 768-hidden, 12-heads, 110M parameters>, and bert_config.json and vocab.txt are identical to Google's original settings. 
 ### Finetune
