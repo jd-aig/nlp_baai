@@ -47,7 +47,7 @@ We evaluate our pre-trained model on the FAQ task with test data of LCQMC, QQ da
 | BERT-wwm | **88.7** | 80.9 | 86.6 |
 | Our BERT | 88.6 | **81.9** | **87.5** |
 
-``LCQMC`，```QQ Test`` and ``QA Test`` are the test data containing 5k question pairs, 21k question pairs and 54k question&answer pairs respectively.
+``LCQMC``，``QQ Test`` and ``QA Test`` are the test data containing 5k question pairs, 21k question pairs and 54k question&answer pairs respectively.
 
 ## Word Embedding
 ### Pre-training Settings
