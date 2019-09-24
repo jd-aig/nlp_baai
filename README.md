@@ -54,7 +54,7 @@ We evaluate our pre-trained model on the FAQ task with ``Test`` data of LCQMC an
 | BERT-wwm | **88.7** | 86.6 |
 | Our BERT | 88.6 | **87.5** |
 
-We quote the ``BERT`` and ``ERNIE``'s results on LCQMC from the [`Chinese-BERT-wwm report`](https://arxiv.org/pdf/1906.08101.pdf) 
+We quote the ``BERT`` and ``ERNIE``'s results on LCQMC from the [`Chinese-BERT-wwm report`](https://arxiv.org/pdf/1906.08101.pdf).
 ## Word Embedding
 ### Pre-training Settings
 | Window Size | Dynamic Window | Sub-sampling | Low-frequency Word | Iter | Negative Sampling<sup>for SGNS</sup> | Dim |
