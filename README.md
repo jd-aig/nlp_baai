@@ -1,10 +1,9 @@
 ## Introduction
 For better training models or completing tasks in the e-commercial domain, we provide the pre-trained BERT and word embedding. The charts below shows the data we use.
 
-| Task| Data Source | Sentences | Sentence Pairs |
-| -- | :--: | :--: | :--: |
-| BERT Pre-Training | Customer Service Dialogue Data(CSDD)| 1.2B | - |
-| FAQ | LCQMC、CSDD | - | 0.88M for fine-tuning, 80K for test |
+| Task| Data Source | Sentences |
+| -- | :--: | :--: |
+| BERT Pre-Training | Customer Service Dialogue Data(CSDD)| 1.2B |
 
 | Task | Data Source | Tokens | Vocabulary Size |
 | -- | :--: | :--: | :--: |
@@ -14,7 +13,7 @@ The links to the models are here.
 
 | Model | Data Source| Link |
 | -- | :--: | :--: |
-| BAAI-JDAI-BERT, chinese | CSDD | [JD-BERT for Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048798&Signature=vv36ssU2iqVasPOdYuBCWIDm5X4%3D)|
+| BAAI-JDAI-BERT, Chinese | CSDD | [JD-BERT for Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048798&Signature=vv36ssU2iqVasPOdYuBCWIDm5X4%3D)|
 | BAAI-JDAI-WordEmbedding | CSDD | [JD-WORD-EMBEDDING with 300d](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-WORD-EMBEDDING.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048776&Signature=14rM5LFQywsWHLXhlhGEQAHEE%2FQ%3D)|
 
 ```
@@ -35,19 +34,25 @@ JD-WORD-EMBEDDING.tar.gz file contains items:
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | WordPiece | CSDD | 1.2B | 1M | P40×4 | BERT<sup>Google</sup> weight | 1e-4 |
 * When pre-training, we do the data preprocessing with our preprocessor including some generalization processing.
-* The init checkpoint we use is <12-layer, 768-hidden, 12-heads, 110M parameters>, and bert_config.json and vocab.txt are identical to Google's original settings. 
+* The init checkpoint we use is ``<12-layer, 768-hidden, 12-heads, 110M parameters>, Chinese``, and ``bert_config.json`` and ``vocab.txt`` are identical to Google's original settings. 
+* We do not use ``Chinese Whole Word Masking(WWM)`` in our current pre-training but use google's original WWM which is on the Chinese character level.
 ### Fine-tuning
-We use train data of LCQMC, QQ dataset and QA dataset for fine-tuning, and then just train 2 epoches with a proper init learning rate 2e-5 on each dataset respectively. QQ dataset and QA dataset are extracted from other CSDD.
+We use train data of LCQMC and QQ dataset for fine-tuning, and then just train 2 epochs with a proper init learning rate 2e-5 on each dataset respectively. 
+
+| Dataset | Train | Test | Domain | MaxLen | Batch Size | Epoch |
+| -- | -- | -- | -- | -- | -- | -- |
+| LCQMC | 140K | 12.5K | Zhidao | 128 | 32 | 2 |
+| QQ dataset | 200K | 9K | Customer Service | 128 | 32 | 2 |
+
+QQ dataset is extracted from other CSDD.
 ### Evaluation
-We evaluate our pre-trained model on the FAQ task with test data of LCQMC, QQ dataset and QA dataset.
+We evaluate our pre-trained model on the FAQ task with test data of LCQMC and QQ dataset.``LCQMC``and ``QQ Test`` contain 5K and 21K question pairs respectively.
 
 #### FAQ
-| Model | LCQMC | QQ Test | QA Test|
-| -- | :--: | :--: | :--: |
-| BERT-wwm | **88.7** | 80.9 | 86.6 |
-| Our BERT | 88.6 | **81.9** | **87.5** |
-
-``LCQMC``，``QQ Test`` and ``QA Test`` are the test data containing 5k question pairs, 21k question pairs and 54k question&answer pairs respectively.
+| Model | LCQMC | QQ Test |
+| -- | :--: | :--: |
+| BERT-wwm | **88.7** | 80.9 |
+| Our BERT | 88.6 | **81.9** |
 
 ## Word Embedding
 ### Pre-training Settings
