@@ -3,7 +3,7 @@ For better training models or completing tasks in the e-commercial domain, we pr
 
 | Task| Data Source | Sentences |
 | -- | :--: | :--: |
-| BERT Pre-Training | Customer Service Dialogue Data(CSDD)| 1.2B |
+| BERT Pre-Training | CSDD(Customer Service Dialog Data)| 1.2B |
 
 | Task | Data Source | Tokens | Vocabulary Size |
 | -- | :--: | :--: | :--: |
@@ -37,19 +37,17 @@ JD-WORD-EMBEDDING.tar.gz file contains items:
 * The init checkpoint we use is ``<12-layer, 768-hidden, 12-heads, 110M parameters>, Chinese``, and ``bert_config.json`` and ``vocab.txt`` are identical to Google's original settings. 
 * We do not use ``Chinese Whole Word Masking(WWM)`` in our current pre-training but use google's original WWM which is on the Chinese character level.
 ### Fine-tuning
-We use train data of LCQMC and QQ dataset for fine-tuning, and then just train 2 epochs with a proper init learning rate 2e-5 on each dataset respectively. 
+We use ``Train`` data of LCQMC(Large-scale Chinese Question Matching Corpus) and CSDQMC(Customer Service Dialog Question Matching Corpus) for fine-tuning, and then just train 2 epochs with a proper init learning rate 2e-5 on each dataset respectively. 
 
 | Dataset | Train | Test | Domain | MaxLen | Batch Size | Epoch |
 | -- | -- | -- | -- | -- | -- | -- |
 | LCQMC | 140K | 12.5K | Zhidao | 128 | 32 | 2 |
-| QQ dataset | 200K | 9K | Customer Service | 128 | 32 | 2 |
+| CSDQMC | 200K | 9K | Customer Service | 128 | 32 | 2 |
 
-QQ dataset is extracted from other CSDD.
 ### Evaluation
-We evaluate our pre-trained model on the FAQ task with test data of LCQMC and QQ dataset.``LCQMC``and ``QQ Test`` contain 5K and 21K question pairs respectively.
-
-#### FAQ
-| Model | LCQMC | QQ Test |
+We evaluate our pre-trained model on the FAQ task with ``Test`` data of LCQMC and CSDQMC.
+#### FAQ Task
+| Model | LCQMC | CSDQMC |
 | -- | :--: | :--: |
 | BERT-wwm | **88.7** | 80.9 |
 | Our BERT | 88.6 | **81.9** |
