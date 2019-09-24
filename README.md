@@ -40,7 +40,7 @@ JD-WORD-EMBEDDING.tar.gz file contains items:
 We use ``Train`` data of LCQMC(Large-scale Chinese Question Matching Corpus) and CSDQMC(Customer Service Dialog Question Matching Corpus) for fine-tuning, and then just train 2 epochs with a proper init learning rate 2e-5 on each dataset respectively. 
 
 | Dataset | Train | Test | Domain | MaxLen | Batch Size | Epoch |
-| -- | -- | -- | -- | -- | -- | -- |
+| -- | :--: | :--: | :--: | :--: | :--: | :--: |
 | LCQMC | 140K | 12.5K | Zhidao | 128 | 32 | 2 |
 | CSDQMC | 200K | 9K | Customer Service | 128 | 32 | 2 |
 
@@ -49,9 +49,12 @@ We evaluate our pre-trained model on the FAQ task with ``Test`` data of LCQMC an
 #### FAQ Task
 | Model | LCQMC | CSDQMC |
 | -- | :--: | :--: |
-| BERT-wwm | **88.7** | 80.9 |
-| Our BERT | 88.6 | **81.9** |
+| ERNIE |87.2|-|
+| BERT |86.9|85.1|
+| BERT-wwm | **88.7** | 86.6 |
+| Our BERT | 88.6 | **87.5** |
 
+We quote the ``BERT`` and ``ERNIE``'s results on LCQMC from the [`Chinese-BERT-wwm report`](https://arxiv.org/pdf/1906.08101.pdf) 
 ## Word Embedding
 ### Pre-training Settings
 | Window Size | Dynamic Window | Sub-sampling | Low-frequency Word | Iter | Negative Sampling<sup>for SGNS</sup> | Dim |
