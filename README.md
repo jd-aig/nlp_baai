@@ -6,13 +6,9 @@ Our corpus is very huge, currently we are using 42 GB Customer Service Dialogue 
 
 We provide the pre-trained BERT and word embeddings. The charts below shows the data we use.
 
-| Task| Data Source | Sentences |
-| -- | :--: | :--: |
-| BERT Pre-Training | CSDD(Customer Service Dialog Data)| 1.2B |
-
-| Task | Data Source | Tokens | Vocabulary Size |
-| -- | :--: | :--: | :--: |
-| Word Embedding Pre-Training | CSDD | 9B | 1M | 
+| Task| Data Source | Sentences | Tokens | Vocabulary Size |
+| -- | :--: | :--: | :--: | :--: |
+| Pre-Training | CSDD(Customer Service Dialog Data)| 1.2B | 9B | 1M |
 
 ## Download
 The links to the models are here.
@@ -58,7 +54,7 @@ We evaluate our pre-trained model on the FAQ task with ``Test`` data of LCQMC an
 | ERNIE |87.2|-|
 | BERT |86.9|85.1|
 | BERT-wwm | **88.7** | 86.6 |
-| Our BERT | 88.6 | **87.5** |
+| BAAI-JDAI-BERT | 88.6 | **87.5** |
 
 We quote the ``BERT`` and ``ERNIE``'s results on LCQMC from the [`Chinese-BERT-wwm report`](https://arxiv.org/pdf/1906.08101.pdf).
 ## Word Embedding
