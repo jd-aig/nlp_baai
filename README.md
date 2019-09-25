@@ -1,5 +1,10 @@
 ## Introduction
-For better training models or completing tasks in the e-commercial domain, we provide the pre-trained BERT and word embedding. The charts below shows the data we use.
+
+This is project for releasing some open-source natural language models from Joint Lab of [BAAI](https://www.baai.ac.cn/) and [JDAI](http://air.jd.com/).
+Different from other open-source Chinese NLP models, we mainly focus on some basic models for dialogue systems, especially in E-commerce domain.
+Our corpus is very huge, currently we are using 42 GB Customer Service Dialogue Data (CSDD) for training, and it contain about **1.2 billion** sentences.
+
+We provide the pre-trained BERT and word embeddings. The charts below shows the data we use.
 
 | Task| Data Source | Sentences |
 | -- | :--: | :--: |
@@ -8,6 +13,7 @@ For better training models or completing tasks in the e-commercial domain, we pr
 | Task | Data Source | Tokens | Vocabulary Size |
 | -- | :--: | :--: | :--: |
 | Word Embedding Pre-Training | CSDD | 9B | 1M | 
+
 ## Download
 The links to the models are here.
 
