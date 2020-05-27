@@ -13,5 +13,5 @@
 为促进广大参赛者相互学习交流，本次大赛也将同步发布基于检索方案和基于生成方案的基线比赛模型，参赛选手可以通过基线系统完成比赛数据预处理和模型训练，熟悉了解多模态对话系统的构建方式：
 
 - [Multimodal Dialogue Dense Retriever模型](./mddr)，能够实现多模态多轮对话的检索，通过对海量多模态历史交互信息的检索召回与排序，实现对当前问题的应答。
-- [Multimodal Hierarchical Encoder Decoder模型](./mhred)，能够实现多模态多轮对话的建模，端到端生成文本应答，实现多轮对话。
+- [Multimodal Hierarchical Encoder Decoder模型](./mhred)，能够实现多模态多轮对话的建模，端到端生成文本应答，实现多轮对话。该基线模型提供PyTorch框架和TensorFlow2框架的两种实现。
 
