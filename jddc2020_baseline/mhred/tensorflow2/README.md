@@ -10,9 +10,7 @@ Multimodal Hierarchical Encoder Decoder模型（MHRED），能够实现多模态
 Overview of Multimodal Hierarchical Encoder Decoder
 </p>
 
-此代码为MHRED的tensorflow2.1.0版本，大致内容与pytorch版本相同，只是在数据转换方式、图片嵌入网络选择等方面有细微差别。  
-
-具体使用方法如下所述。
+此代码为MHRED的tensorflow2.1.0版本，大致内容与pytorch版本相同，只是在数据转换方式、图片嵌入网络选择等方面有细微差别。具体使用方法如下所述。
 
 ### 模型训练
 
@@ -33,9 +31,9 @@ Overview of Multimodal Hierarchical Encoder Decoder
     python3 prepare_data.py
 
 #### 下载预训练模型  
-由于该实现模型中使用了keras中的MobileNet网络对图像数据做嵌入处理，网络使用在imagenet上训练产生的预训练参数。  
+由于该模型使用了Keras的MobileNet预训练模型对图像数据做嵌入处理，并使用该模型在ImageNet上训练产生的预训练参数。  
 
-训练过程中可自动下载预训练模型参数，如果感觉下载速度缓慢，也可以在下述链接中手动下载。  
+本模型训练过程中可自动下载预训练模型参数，如果感觉下载速度缓慢，也可以在下述链接中手动下载：  
 
 https://github.com/fchollet/deep-learning-models/releases/download/v0.6/mobilenet_1_0_224_tf_no_top.h5  
 

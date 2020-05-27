@@ -13,7 +13,7 @@ Overview of Multimodal Dialogue Dense Retriever
 #### 闲聊分类模块
 针对多轮对话场景，判断当前用户问题是否含有充足的业务信息。在对话过程中，系统会使用该模块对用户问题进行判断，如果当前信息不足以进行有意义的应答，则系统会加上上一轮的用户问题，进行检索召回。
 
-该模块示例使用fasttext模型实现，并随机挑选了2200条此次比赛训练集中出现的数据进行标注，其中标签"1"表示该问题是缺乏业务知识的闲聊，标签"0"表示该问题还有业务知识。
+该模块示例使用fasttext模型实现，并随机挑选了2200条此次比赛训练集中出现的数据进行标注，其中标签"1"表示该问题是缺乏业务知识的闲聊，标签"0"表示该问题含有业务知识。
 
 在./chat文件夹下，直接运行，即可得到闲聊分类模型：
 
@@ -33,13 +33,13 @@ Overview of Multimodal Dialogue Dense Retriever
 
 	python3 qa_text_index.py
 	
-对于图片问答对知识库，会通过预训练Resent18模型提取问题图片特征，需要从Pytorch官网下载预训练esent18模型[https://download.pytorch.org/models/resnet18-5c106cde.pth](https://download.pytorch.org/models/resnet18-5c106cde.pth)，并在程序运行前需要export相关路径。本示例将图片问答知识库中的图片问题提取特征建立了索引，在后面的处理中通过问图片问题的相似性进行候选应答的召回：
+对于图片问答对知识库，会通过预训练Resent18模型提取问题图片特征，需要从Pytorch官网下载预训练esent18模型[https://download.pytorch.org/models/resnet18-5c106cde.pth](https://download.pytorch.org/models/resnet18-5c106cde.pth)，并在程序运行前export相关路径。本示例将图片问答知识库中的图片问题提取特征建立了索引，在后面的处理中通过问图片问题的相似性进行候选应答的召回：
 
     python3 qa_image_index.py
 
 #### 应答文本分类模块
-该模型以预训练的bert-base-chinese为基础，在大赛数据上自动构建Q-A对训练数据，使用bert中Next Sentence Prediction (NSP)的任务对模型进行fine-tune。该模型便可以对检索模型的召回结果进行排序， 从而得到最终的用户问题应答。
-该模块以问答挖掘模块产生的文档知识库为数据资源，其中以知识库中存在的QA对，Q<sub>n</sub>与A<sub>n</sub>问答对作为正例，以Q<sub>n</sub>与A<sub>random</sub>问答对作为负例，构建用于该模型训练的数据，在./transformers文件夹下，运行：
+该模型以预训练的bert-base-chinese为基础，在大赛数据上自动构建Q-A对训练数据，使用bert中Next Sentence Prediction (NSP)的任务对模型进行fine-tune。该模型可以对检索模型的召回结果进行排序， 从而得到最终的用户问题应答。
+该模块以问答挖掘模块产生的文本问答知识库为数据资源，其中以知识库中存在的QA对，Q<sub>n</sub>与A<sub>n</sub>问答对作为正例，以Q<sub>n</sub>与A<sub>random</sub>问答对作为负例，构建用于该模型训练的数据，在./transformers文件夹下，运行：
 
 	python3 preprocess.py
 	
@@ -49,6 +49,7 @@ Overview of Multimodal Dialogue Dense Retriever
     
 #### 召回与排序模块
 在本示例中，召回与应答模块直接读取线上评测目录中评测问题./online_test_data/test_questions.json文件，最终生成用于评测的应答文件/online_test_data/test_answers.json文件。
+
 召回模块读取用户问题，并用闲聊模型进行判断，如果认为当前信息不充足，则会使用上轮用户问题进行检索。用户请求的句子会转换成平均词向量检索先前建立好的知识库，找出相似的候选QA对，并保存至临时文件test_text_recall.json；用户图片类问题请求通过预训练Resnet18提取特征后，检索图文问答知识库找出候选回答，并保存至临时文件test_safe_answer.json：
     
     python3 mddr_recall.py
