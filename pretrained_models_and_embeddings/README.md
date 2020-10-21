@@ -15,8 +15,8 @@ The links to the models are here.
 
 | Model | Data Source| Link |
 | -- | :--: | :--: |
-| BAAI-JDAI-BERT, Chinese | CSDD | [JD-BERT for Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048798&Signature=vv36ssU2iqVasPOdYuBCWIDm5X4%3D)|
-| BAAI-JDAI-WordEmbedding | CSDD | [JD-WORD-EMBEDDING with 300d](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-WORD-EMBEDDING.tar.gz?AWSAccessKeyId=BB50A587AB371E21919040C802767A0C&Expires=1600048776&Signature=14rM5LFQywsWHLXhlhGEQAHEE%2FQ%3D)|
+| BAAI-JDAI-BERT, Chinese | CSDD | [JD-BERT for Tensorflow](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-BERT.tar.gz?AWSAccessKeyId=86FD402DD0CB693D629F6E62DC11E0E6&Expires=1634304356&Signature=dfnLvSzXeerRPSnMsZXSoEwdmkw%3D)|
+| BAAI-JDAI-WordEmbedding | CSDD | [JD-WORD-EMBEDDING with 300d](https://jdai009.s3.cn-north-1.jdcloud-oss.com/jd-aig/open/models/nlp_baai/20190918/JDAI-WORD-EMBEDDING.tar.gz?AWSAccessKeyId=86FD402DD0CB693D629F6E62DC11E0E6&Expires=1634304403&Signature=swr%2BpTo882fzAUALrOFC7XEk7vM%3D)|
 
 ```
 JD-BERT.tar.gz file contains items:
